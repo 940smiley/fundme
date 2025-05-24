@@ -114,6 +114,39 @@ const assistanceResources = [
     }
 ];
 
+// --- GoFundMe and AI Fundraiser Features ---
+
+// Mock GoFundMe data
+const gofundmeFundraisers = [
+    {
+        id: 1,
+        title: "Help Sarah Beat Cancer",
+        description: "Sarah is battling leukemia and needs support for her treatment and recovery.",
+        amount: "$12,500 raised of $20,000",
+        link: "https://www.gofundme.com/f/help-sarah-beat-cancer",
+        category: "medical",
+        location: "Austin, TX"
+    },
+    {
+        id: 2,
+        title: "Rent Relief for the Johnson Family",
+        description: "The Johnsons are facing eviction and need urgent help to cover rent and utilities.",
+        amount: "$3,200 raised of $5,000",
+        link: "https://www.gofundme.com/f/rent-relief-johnson-family",
+        category: "rent",
+        location: "Detroit, MI"
+    },
+    {
+        id: 3,
+        title: "Support Maria's College Dream",
+        description: "Maria is a first-generation student raising funds for her college tuition.",
+        amount: "$7,800 raised of $10,000",
+        link: "https://www.gofundme.com/f/support-maria-college",
+        category: "education",
+        location: "Los Angeles, CA"
+    }
+};
+
 // Application state
 let currentView = 'home';
 let searchResults = [];
@@ -187,6 +220,54 @@ function setupEventListeners() {
         document.body.classList.toggle('dark-mode', darkMode);
         darkModeToggle.innerHTML = darkMode ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode';
     };
+
+    // GoFundMe search functionality
+    const gfmSearch = document.getElementById('gfm-search');
+    const gfmSearchBtn = document.getElementById('gfm-search-btn');
+    const gfmResultsList = document.getElementById('gfm-results-list');
+    const gfmAICreateBtn = document.getElementById('gfm-ai-create-btn');
+
+    if (gfmSearchBtn) {
+        gfmSearchBtn.addEventListener('click', () => {
+            const query = gfmSearch.value.trim().toLowerCase();
+            const results = gofundmeFundraisers.filter(f =>
+                f.title.toLowerCase().includes(query) ||
+                f.description.toLowerCase().includes(query) ||
+                f.category.toLowerCase().includes(query)
+            );
+            displayGoFundMeResults(results);
+        });
+    }
+
+    // AI Create Fundraiser (mocked)
+    if (gfmAICreateBtn) {
+        gfmAICreateBtn.addEventListener('click', () => {
+            const aiFundraiser = {
+                title: "AI-Generated: Help Alex Recover from Surgery",
+                description: "Alex needs urgent support for post-surgery care and rehabilitation. Every contribution helps!",
+                amount: "$0 raised of $8,000",
+                link: "#",
+                category: "medical",
+                location: "Chicago, IL"
+            };
+            displayGoFundMeResults([aiFundraiser, ...gofundmeFundraisers]);
+        });
+    }
+}
+
+// AI Promotion Feature (moved outside setupEventListeners for clarity)
+const aiGenerateBtn = document.getElementById('ai-generate-btn');
+const aiFundraiserDesc = document.getElementById('ai-fundraiser-desc');
+const aiPromoOutput = document.getElementById('ai-promo-output');
+
+if (aiGenerateBtn) {
+    aiGenerateBtn.addEventListener('click', () => {
+        const userDesc = aiFundraiserDesc.value.trim();
+        const aiText = userDesc
+            ? `🌟 Support Needed! 🌟\n${userDesc}\nEvery donation, big or small, makes a difference. Please share and help us reach our goal! #Fundraiser #Support #Community`
+            : `🌟 Support Needed! 🌟\nI'm raising funds for an urgent cause. Every donation, big or small, makes a difference. Please share and help us reach our goal! #Fundraiser #Support #Community`;
+        aiPromoOutput.textContent = aiText;
+    });
 }
 
 // Navigation
@@ -215,6 +296,11 @@ function showSection(sectionName) {
     // Update favorites display when favorites section is shown
     if (sectionName === 'favorites') {
         updateFavoritesDisplay();
+    }
+
+    // Display GoFundMe results if GoFundMe section is shown
+    if (sectionName === 'gofundme') {
+        displayGoFundMeResults(gofundmeFundraisers);
     }
 }
 
@@ -400,6 +486,59 @@ function updateFavoritesDisplay() {
             toggleFavorite(resourceId);
         });
     });
+}
+
+// GoFundMe results display
+function displayGoFundMeResults(results) {
+    const gfmResultsList = document.getElementById('gfm-results-list');
+    if (!gfmResultsList) return;
+    if (results.length === 0) {
+        gfmResultsList.innerHTML = '<div class="no-results"><i class="fas fa-search" style="font-size:2rem;color:#ccc;"></i><h4>No fundraisers found</h4></div>';
+        return;
+    }
+    gfmResultsList.innerHTML = results.map(f => `
+        <div class="gfm-card fade-in-up">
+            <div class="gfm-title">${f.title}</div>
+            <div class="gfm-meta"><i class="fas fa-map-marker-alt"></i> ${f.location} &nbsp; <span>${f.amount}</span></div>
+            <div class="gfm-desc">${f.description}</div>
+            <div class="gfm-actions">
+                <a href="${f.link}" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View Fundraiser</a>
+                <button class="btn btn-outline" onclick="copyLink('${f.link}')"><i class="fas fa-copy"></i> Copy Link</button>
+                <button class="btn btn-outline apply-btn" data-id="${f.id}"><i class="fas fa-paper-plane"></i> Apply/Contact</button>
+            </div>
+        </div>
+    `).join('');
+    // Add event listeners for apply buttons
+    document.querySelectorAll('.apply-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showApplyModal();
+        });
+    });
+}
+
+// Apply/Contact Modal (mocked)
+function showApplyModal() {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100vw';
+    modal.style.height = '100vh';
+    modal.style.background = 'rgba(0,0,0,0.4)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.style.zIndex = '10001';
+    modal.innerHTML = `
+        <div style="background:#fff;padding:32px 24px;border-radius:16px;max-width:350px;width:100%;box-shadow:0 8px 32px rgba(31,38,135,0.18);text-align:center;">
+            <h4>Apply/Contact</h4>
+            <p>To apply or contact the fundraiser, please visit the GoFundMe page and use their contact form or donation button.</p>
+            <button class="btn btn-primary" id="close-modal">Close</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    document.getElementById('close-modal').onclick = () => modal.remove();
 }
 
 // Utility functions

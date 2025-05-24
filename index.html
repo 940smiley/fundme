@@ -23,6 +23,8 @@
                     <a href="#search" class="nav-link">Search</a>
                     <a href="#favorites" class="nav-link">Favorites</a>
                     <a href="#about" class="nav-link">About</a>
+                    <a href="#gofundme" class="nav-link">GoFundMe</a>
+                    <a href="#ai-promotion" class="nav-link">AI Promotion</a>
                 </div>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -127,6 +129,27 @@
                         <li>Read community rules before participating</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <section id="gofundme" class="gofundme-section hidden">
+            <div class="container">
+                <h3>AI-Assisted GoFundMe Fundraisers</h3>
+                <div class="gfm-search-bar">
+                    <input type="text" id="gfm-search" placeholder="Search GoFundMe fundraisers (e.g., medical, rent, education)">
+                    <button id="gfm-search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                    <button id="gfm-ai-create-btn" class="btn btn-outline"><i class="fas fa-robot"></i> AI Create Fundraiser</button>
+                </div>
+                <div id="gfm-results-list"></div>
+            </div>
+        </section>
+        <section id="ai-promotion" class="ai-promotion-section hidden">
+            <div class="container">
+                <h3>AI Fundraiser Promotion</h3>
+                <p>Let AI generate a compelling description and social post for your fundraiser!</p>
+                <textarea id="ai-fundraiser-desc" rows="4" placeholder="Describe your cause or let AI help..."></textarea>
+                <button id="ai-generate-btn" class="btn btn-primary"><i class="fas fa-magic"></i> Generate AI Promotion</button>
+                <div id="ai-promo-output" class="ai-promo-output"></div>
             </div>
         </section>
     </main>

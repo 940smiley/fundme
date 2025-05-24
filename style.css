@@ -548,7 +548,88 @@ body.dark-mode .dark-mode-toggle {
     color: #232946;
 }
 
-/* Responsive Design */
+/* GoFundMe and AI Promotion Sections */
+.gofundme-section, .ai-promotion-section {
+    padding: 60px 0;
+    background: var(--card-bg);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+.gofundme-section h3, .ai-promotion-section h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+.gfm-search-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+#gfm-search {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    min-width: 220px;
+}
+#gfm-results-list {
+    margin-top: 20px;
+}
+.gfm-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(102,126,234,0.08);
+    padding: 24px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.gfm-card:hover {
+    box-shadow: 0 8px 32px rgba(102,126,234,0.15);
+    transform: translateY(-4px) scale(1.01);
+}
+.gfm-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.gfm-meta {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+.gfm-desc {
+    color: #444;
+    margin-bottom: 8px;
+}
+.gfm-actions {
+    display: flex;
+    gap: 10px;
+}
+.ai-promotion-section textarea {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 16px;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    resize: vertical;
+}
+.ai-promo-output {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 18px;
+    margin-top: 18px;
+    color: #333;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.07);
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
@@ -623,6 +704,11 @@ body.dark-mode .dark-mode-toggle {
     .result-item {
         padding: 20px;
     }
+}
+
+@media (max-width: 600px) {
+    .gfm-search-bar { flex-direction: column; }
+    .gofundme-section, .ai-promotion-section { padding: 30px 0; }
 }
 
 /* Animation Classes */
