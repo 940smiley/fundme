@@ -145,7 +145,7 @@ const gofundmeFundraisers = [
         category: "education",
         location: "Los Angeles, CA"
     }
-};
+];
 
 // Application state
 let currentView = 'home';
