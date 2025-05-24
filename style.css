@@ -550,7 +550,7 @@ body.dark-mode .dark-mode-toggle {
 
 /* GoFundMe and AI Promotion Sections */
 .gofundme-section, .ai-promotion-section {
-    padding: 60px 0;
+    padding: 100px 0 60px 0; /* Add extra top padding to clear the fixed header */
     background: var(--card-bg);
     backdrop-filter: var(--glass-blur);
     box-shadow: var(--shadow);
