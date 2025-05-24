@@ -179,6 +179,13 @@ function setupEventListeners() {
             e.preventDefault();
             const target = link.getAttribute('href').substring(1);
             showSection(target);
+            // If the search tab is clicked, clear previous results and header
+            if (target === 'search') {
+                const resultsHeader = document.querySelector('.search-results h3');
+                if (resultsHeader) resultsHeader.textContent = 'Search Results';
+                if (resultsContainer) resultsContainer.innerHTML = '';
+                if (searchResultsSection) searchResultsSection.classList.remove('hidden');
+            }
         });
     });
 
