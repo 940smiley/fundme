@@ -241,8 +241,9 @@ function setupEventListeners() {
 
     // AI Create Fundraiser (mocked)
     if (gfmAICreateBtn) {
-        gfmAICreateBtn.addEventListener('click', () => {
+        gfmAICreateBtn.addEventListener('click', function() {
             const aiFundraiser = {
+                id: Date.now(), // ensure unique id
                 title: "AI-Generated: Help Alex Recover from Surgery",
                 description: "Alex needs urgent support for post-surgery care and rehabilitation. Every contribution helps!",
                 amount: "$0 raised of $8,000",
@@ -250,6 +251,7 @@ function setupEventListeners() {
                 category: "medical",
                 location: "Chicago, IL"
             };
+            // Prepend the new AI fundraiser to the list and display
             displayGoFundMeResults([aiFundraiser, ...gofundmeFundraisers]);
         });
     }
