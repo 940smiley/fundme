@@ -179,12 +179,18 @@ function setupEventListeners() {
             e.preventDefault();
             const target = link.getAttribute('href').substring(1);
             showSection(target);
-            // If the search tab is clicked, clear previous results and header
+            // If the search tab is clicked, show the search-results section and hide others
             if (target === 'search') {
+                sections.forEach(section => {
+                    if (section.id === 'search-results') {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
                 const resultsHeader = document.querySelector('.search-results h3');
                 if (resultsHeader) resultsHeader.textContent = 'Search Results';
                 if (resultsContainer) resultsContainer.innerHTML = '';
-                if (searchResultsSection) searchResultsSection.classList.remove('hidden');
             }
         });
     });
