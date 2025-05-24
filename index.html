@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundMe - AI-Assisted Financial Assistance Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo"><i class="fas fa-hand-holding-heart"></i> FundMe</h1>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#search" class="nav-link">Search</a>
+                    <a href="#favorites" class="nav-link">Favorites</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Find Financial Assistance with AI</h2>
+                <p>Discover communities, groups, and platforms that offer financial help and blessings</p>
+                <div class="search-container">
+                    <input type="text" id="main-search" placeholder="What kind of assistance do you need?">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="categories">
+            <div class="container">
+                <h3>Popular Categories</h3>
+                <div class="category-grid">
+                    <div class="category-card" data-category="cashapp">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>CashApp Blessings</h4>
+                        <p>Find CashApp blessing opportunities and generous communities</p>
+                    </div>
+                    <div class="category-card" data-category="paypal">
+                        <i class="fab fa-paypal"></i>
+                        <h4>PayPal Assistance</h4>
+                        <p>Discover PayPal blessing groups and financial help</p>
+                    </div>
+                    <div class="category-card" data-category="reddit">
+                        <i class="fab fa-reddit"></i>
+                        <h4>Reddit Communities</h4>
+                        <p>Browse Reddit communities that help people in need</p>
+                    </div>
+                    <div class="category-card" data-category="facebook">
+                        <i class="fab fa-facebook"></i>
+                        <h4>Facebook Groups</h4>
+                        <p>Find Facebook groups offering financial assistance</p>
+                    </div>
+                    <div class="category-card" data-category="emergency">
+                        <i class="fas fa-ambulance"></i>
+                        <h4>Emergency Help</h4>
+                        <p>Immediate financial assistance for urgent situations</p>
+                    </div>
+                    <div class="category-card" data-category="bills">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h4>Bill Assistance</h4>
+                        <p>Help with utilities, rent, and other essential bills</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="search-results" class="search-results hidden">
+            <div class="container">
+                <h3>Search Results</h3>
+                <div class="results-container">
+                    <div class="loading hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>AI is searching for the best matches...</p>
+                    </div>
+                    <div id="results-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="favorites" class="favorites hidden">
+            <div class="container">
+                <h3>Your Saved Resources</h3>
+                <div id="favorites-list">
+                    <p class="empty-favorites">No saved resources yet. Start browsing to add favorites!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about hidden">
+            <div class="container">
+                <h3>About FundMe</h3>
+                <div class="about-content">
+                    <p>FundMe is an AI-assisted platform designed to help people find financial assistance through various online communities and platforms. Our mission is to connect those in need with generous communities and assistance programs.</p>
+                    
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li><strong>Search:</strong> Tell us what kind of assistance you need</li>
+                        <li><strong>AI Matching:</strong> Our AI finds the most relevant communities and resources</li>
+                        <li><strong>Connect:</strong> Get direct links and information about assistance opportunities</li>
+                        <li><strong>Save:</strong> Keep track of your favorite resources for future reference</li>
+                    </ol>
+
+                    <h4>Safety Tips</h4>
+                    <ul>
+                        <li>Always verify the legitimacy of assistance programs</li>
+                        <li>Never share personal financial information unnecessarily</li>
+                        <li>Be cautious of scams and too-good-to-be-true offers</li>
+                        <li>Read community rules before participating</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 FundMe. Made with ❤️ to help people find financial assistance.</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
