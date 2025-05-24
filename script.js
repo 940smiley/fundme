@@ -174,6 +174,19 @@ function setupEventListeners() {
             navMenu.classList.toggle('active');
         });
     }
+
+    // Add dark mode toggle with custom class for styling
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.className = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+    document.body.appendChild(darkModeToggle);
+
+    let darkMode = false;
+    darkModeToggle.onclick = function() {
+        darkMode = !darkMode;
+        document.body.classList.toggle('dark-mode', darkMode);
+        darkModeToggle.innerHTML = darkMode ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode';
+    };
 }
 
 // Navigation
@@ -501,6 +514,57 @@ const additionalCSS = `
         .nav-menu {
             display: none;
         }
+    }
+
+    .dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    .dark-mode .result-item {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+    }
+
+    .dark-mode .btn-primary {
+        background-color: #667eea;
+        color: white;
+    }
+
+    .dark-mode .btn-outline {
+        background-color: transparent;
+        color: #667eea;
+        border: 1px solid #667eea;
+    }
+
+    .dark-mode .tag {
+        background: #333;
+        color: #fff;
+    }
+
+    .dark-mode .nav-menu {
+        background: #1e1e1e;
+        border-top: 1px solid #333;
+    }
+
+    .dark-mode .nav-link.active {
+        color: #667eea;
+    }
+
+    .dark-mode .nav-link {
+        color: #e0e0e0;
+    }
+
+    .dark-mode h3 {
+        color: #fff;
+    }
+
+    .dark-mode p, .dark-mode span {
+        color: #ccc;
+    }
+
+    .dark-mode .empty-favorites {
+        color: #bbb;
     }
 `;
 
