@@ -549,14 +549,14 @@ body.dark-mode .dark-mode-toggle {
 }
 
 /* GoFundMe and AI Promotion Sections */
-.gofundme-section, .ai-promotion-section {
+.gofundme-section, .ai-promotion-section, .sponsor-section {
     padding: 100px 0 60px 0; /* Add extra top padding to clear the fixed header */
     background: var(--card-bg);
     backdrop-filter: var(--glass-blur);
     box-shadow: var(--shadow);
     margin-bottom: 40px;
 }
-.gofundme-section h3, .ai-promotion-section h3 {
+.gofundme-section h3, .ai-promotion-section h3, .sponsor-section h3 {
     font-size: 2rem;
     margin-bottom: 30px;
     color: #333;
@@ -577,6 +577,44 @@ body.dark-mode .dark-mode-toggle {
 }
 #gfm-results-list {
     margin-top: 20px;
+}
+
+/* Sponsor Finder */
+.sponsor-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+#request-input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    min-width: 220px;
+}
+
+#sponsor-result, #giveaways {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin: 0 auto 20px;
+    max-width: 600px;
+}
+
+#giveaway-list {
+    list-style: disc inside;
+    margin-left: 20px;
+}
+
+#giveaway-entry {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
 }
 .gfm-card {
     background: #fff;

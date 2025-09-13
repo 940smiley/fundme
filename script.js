@@ -163,6 +163,29 @@ const resultsContainer = document.getElementById('results-list');
 const loadingElement = document.querySelector('.loading');
 const favoritesSection = document.getElementById('favorites');
 const favoritesList = document.getElementById('favorites-list');
+const sponsorForm = document.getElementById('sponsor-form');
+const requestInput = document.getElementById('request-input');
+const sponsorNameEl = document.getElementById('sponsor-name');
+const draftMessageEl = document.getElementById('draft-message');
+const sponsorResult = document.getElementById('sponsor-result');
+const giveawaysSection = document.getElementById('giveaways');
+const giveawayList = document.getElementById('giveaway-list');
+const giveawayEntry = document.getElementById('giveaway-entry');
+const giveawayName = document.getElementById('giveaway-name');
+const enterGiveawayBtn = document.getElementById('enter-giveaway');
+
+// Sample sponsors and giveaways
+const sponsors = [
+    { name: "Helping Hands Foundation", keywords: ["general", "bills", "emergency"] },
+    { name: "Food For All", keywords: ["food", "groceries"] },
+    { name: "WarmHome Charity", keywords: ["rent", "housing", "utilities"] }
+];
+
+const giveaways = [
+    { title: "Grocery Gift Card Giveaway", link: "https://example.com/grocery-giveaway" },
+    { title: "Utility Bill Raffle", link: "https://example.com/utility-raffle" },
+    { title: "Community Care Package", link: "https://example.com/care-package" }
+];
 
 // Initialize application
 document.addEventListener('DOMContentLoaded', function() {
@@ -267,6 +290,37 @@ function setupEventListeners() {
                 location: "Chicago, IL"
             };
             displayGoFundMeResults([aiFundraiser, ...gofundmeFundraisers]);
+        });
+    }
+
+    // Sponsor request functionality
+    if (sponsorForm) {
+        sponsorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const request = requestInput.value.trim();
+            if (!request) return;
+            const sponsor = findSponsor(request);
+            sponsorNameEl.textContent = sponsor.name;
+            draftMessageEl.textContent = generateMessage(request, sponsor);
+            sponsorResult.classList.remove('hidden');
+
+            // populate giveaways
+            giveawayList.innerHTML = '';
+            giveaways.forEach(g => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${g.link}" target="_blank">${g.title}</a>`;
+                giveawayList.appendChild(li);
+            });
+            giveawaysSection.classList.remove('hidden');
+            giveawayEntry.classList.remove('hidden');
+        });
+    }
+
+    if (enterGiveawayBtn) {
+        enterGiveawayBtn.addEventListener('click', () => {
+            const name = giveawayName.value.trim();
+            if (!name) return;
+            giveawayEntry.innerHTML = `<p>Thanks, ${name}! You're entered for a chance to win.</p>`;
         });
     }
 }
@@ -555,6 +609,16 @@ function showApplyModal() {
     `;
     document.body.appendChild(modal);
     document.getElementById('close-modal').onclick = () => modal.remove();
+}
+
+// Sponsor helper functions
+function findSponsor(request) {
+    const lower = request.toLowerCase();
+    return sponsors.find(s => s.keywords.some(k => lower.includes(k))) || sponsors[Math.floor(Math.random() * sponsors.length)];
+}
+
+function generateMessage(request, sponsor) {
+    return `Hi ${sponsor.name}, I am reaching out because ${request}. Any assistance would be greatly appreciated. Thank you!`;
 }
 
 // Utility functions
