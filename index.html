@@ -23,6 +23,7 @@
                     <a href="#search" class="nav-link">Search</a>
                     <a href="#favorites" class="nav-link">Favorites</a>
                     <a href="#about" class="nav-link">About</a>
+                    <a href="#sponsor" class="nav-link">Sponsor Finder</a>
                     <a href="#gofundme" class="nav-link">GoFundMe</a>
                     <a href="#ai-promotion" class="nav-link">AI Promotion</a>
                 </div>
@@ -128,6 +129,28 @@
                         <li>Be cautious of scams and too-good-to-be-true offers</li>
                         <li>Read community rules before participating</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+        <section id="sponsor" class="sponsor-section hidden">
+            <div class="container">
+                <h3>Request a Sponsor</h3>
+                <p>Enter what you need and we'll suggest a sponsor and message to ask for help. We'll also show some current giveaways you can enter.</p>
+                <form id="sponsor-form" class="sponsor-form">
+                    <input type="text" id="request-input" placeholder="Describe your request" required>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-hands-helping"></i> Find Sponsor</button>
+                </form>
+                <div id="sponsor-result" class="hidden">
+                    <h4 id="sponsor-name"></h4>
+                    <p id="draft-message" class="sponsor-message"></p>
+                </div>
+                <div id="giveaways" class="hidden">
+                    <h4>Free Giveaways</h4>
+                    <ul id="giveaway-list"></ul>
+                    <div id="giveaway-entry" class="hidden">
+                        <input type="text" id="giveaway-name" placeholder="Your name">
+                        <button type="button" id="enter-giveaway" class="btn btn-outline">Enter to Win</button>
+                    </div>
                 </div>
             </div>
         </section>
