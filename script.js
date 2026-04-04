@@ -237,7 +237,7 @@ function setupEventListeners() {
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -395,7 +395,7 @@ function searchByCategory(category) {
     showLoading();
 
     setTimeout(() => {
-        const results = assistanceResources.filter(resource => 
+        const results = assistanceResources.filter(resource =>
             resource.category === category
         );
         displaySearchResults(results, `${category} resources`);
@@ -405,13 +405,13 @@ function searchByCategory(category) {
 
 function searchResources(query) {
     const queryTerms = query.split(' ').map(term => term.toLowerCase());
-    
+
     return assistanceResources.filter(resource => {
         const searchText = `
-            ${resource.title} 
-            ${resource.description} 
-            ${resource.platform} 
-            ${resource.tags.join(' ')} 
+            ${resource.title}
+            ${resource.description}
+            ${resource.platform}
+            ${resource.tags.join(' ')}
             ${resource.category}
         `.toLowerCase();
 
@@ -423,13 +423,13 @@ function searchResources(query) {
                    (a.description.toLowerCase().includes(term) ? 5 : 0) +
                    (a.tags.some(tag => tag.includes(term)) ? 3 : 0);
         }, 0);
-        
+
         const bScore = queryTerms.reduce((score, term) => {
             return score + (b.title.toLowerCase().includes(term) ? 10 : 0) +
                    (b.description.toLowerCase().includes(term) ? 5 : 0) +
                    (b.tags.some(tag => tag.includes(term)) ? 3 : 0);
         }, 0);
-        
+
         return bScore - aScore;
     });
 }
@@ -464,7 +464,7 @@ function displaySearchResults(results, searchTerm) {
 function createResourceCard(resource) {
     const isFavorited = favorites.includes(resource.id);
     const platformIcon = getPlatformIcon(resource.platform);
-    
+
     return `
         <div class="result-item fade-in-up">
             <div class="result-header">
@@ -511,15 +511,15 @@ function getPlatformIcon(platform) {
 // Favorites functionality
 function toggleFavorite(resourceId) {
     const index = favorites.indexOf(resourceId);
-    
+
     if (index === -1) {
         favorites.push(resourceId);
     } else {
         favorites.splice(index, 1);
     }
-    
+
     localStorage.setItem('fundme-favorites', JSON.stringify(favorites));
-    
+
     // Update UI
     updateFavoriteButtons();
     if (currentView === 'favorites') {
@@ -531,7 +531,7 @@ function updateFavoriteButtons() {
     document.querySelectorAll('.favorite-btn').forEach(btn => {
         const resourceId = parseInt(btn.getAttribute('data-id'));
         const isFavorited = favorites.includes(resourceId);
-        
+
         btn.classList.toggle('favorited', isFavorited);
     });
 }
@@ -542,7 +542,7 @@ function updateFavoritesDisplay() {
         return;
     }
 
-    const favoriteResources = assistanceResources.filter(resource => 
+    const favoriteResources = assistanceResources.filter(resource =>
         favorites.includes(resource.id)
     );
 
@@ -648,9 +648,9 @@ function copyLink(link) {
             z-index: 10000;
             animation: slideInRight 0.3s ease;
         `;
-        
+
         document.body.appendChild(toast);
-        
+
         setTimeout(() => {
             toast.remove();
         }, 3000);
@@ -668,20 +668,20 @@ const additionalCSS = `
         font-size: 0.9rem;
         color: #666;
     }
-    
+
     .result-meta span {
         display: flex;
         align-items: center;
         gap: 5px;
     }
-    
+
     .result-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
         margin-bottom: 20px;
     }
-    
+
     .tag {
         background: #f0f0f0;
         color: #555;
@@ -690,22 +690,22 @@ const additionalCSS = `
         font-size: 0.8rem;
         font-weight: 500;
     }
-    
+
     .no-results {
         text-align: center;
         padding: 80px 20px;
         color: #666;
     }
-    
+
     .no-results h4 {
         margin-bottom: 10px;
         color: #333;
     }
-    
+
     .toast {
         animation: slideInRight 0.3s ease;
     }
-    
+
     @keyframes slideInRight {
         from {
             transform: translateX(100%);
@@ -716,7 +716,7 @@ const additionalCSS = `
             opacity: 1;
         }
     }
-    
+
     .nav-menu.active {
         display: flex;
         position: absolute;
@@ -728,7 +728,7 @@ const additionalCSS = `
         padding: 20px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    
+
     @media (max-width: 768px) {
         .nav-menu {
             display: none;
@@ -827,8 +827,9 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('category-card')) {
         trackEvent('category_clicked', { category: e.target.getAttribute('data-category') });
     }
-    
+
     if (e.target.closest('.btn-primary')) {
         trackEvent('resource_visited', { link: e.target.closest('a')?.href });
     }
 });
+

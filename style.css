@@ -672,50 +672,50 @@ body.dark-mode .dark-mode-toggle {
     .nav-menu {
         display: none;
     }
-    
+
     .hamburger {
         display: flex;
     }
-    
+
     .hero-content h2 {
         font-size: 2rem;
     }
-    
+
     .hero-content p {
         font-size: 1.1rem;
     }
-    
+
     .search-container {
         flex-direction: column;
         border-radius: 10px;
     }
-    
+
     #main-search {
         border-radius: 10px 10px 0 0;
     }
-    
+
     #search-btn {
         border-radius: 0 0 10px 10px;
     }
-    
+
     .category-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .result-header {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .result-platform {
         margin-top: 10px;
     }
-    
+
     .result-actions {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     footer .container {
         flex-direction: column;
         gap: 20px;
@@ -726,19 +726,19 @@ body.dark-mode .dark-mode-toggle {
     .container {
         padding: 0 15px;
     }
-    
+
     .hero {
         padding: 100px 0 60px;
     }
-    
+
     .categories {
         padding: 60px 0;
     }
-    
+
     .category-card {
         padding: 30px 20px;
     }
-    
+
     .result-item {
         padding: 20px;
     }

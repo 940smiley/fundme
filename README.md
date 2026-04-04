@@ -26,6 +26,7 @@ FundMe is an AI-assisted application that helps people find financial assistance
 ## Development
 
 This is a web-based application built with:
+
 - HTML5/CSS3/JavaScript frontend
 - Responsive design for mobile and desktop
 - Modular architecture for easy expansion
